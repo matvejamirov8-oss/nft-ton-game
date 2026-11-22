@@ -2,63 +2,53 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TON NFT Market 🎁</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Gifts Market</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div id="app">
-  <header>
-    <div class="brand">
-      <span class="logo">💎</span>
-      <div>
-        <div class="title">TON NFT Маркет</div>
-        <div class="sub" id="levelLine">Новичок рынка</div>
-      </div>
-    </div>
-    <div class="wallet">
-      <button id="bonusBtn" title="Бонус">🎁<span id="bonusTimer"></span></button>
-      <div class="balance"><span id="tonValue">0</span> <b>TON</b></div>
-    </div>
-  </header>
 
-  <div class="trend-bar">
-    <span>Тренд рынка:</span>
-    <span id="trendValue">—</span>
-    <span class="dot">•</span>
-    <span id="invValue">Инвентарь: 0 TON</span>
+  <div id="screenHome" class="screen">
+    <header id="homeHeader">
+      <div class="hh-left">
+        <div class="hh-title">Gifts</div>
+        <div class="hh-sub" id="balLine">25 TON</div>
+      </div>
+      <div class="hh-right">
+        <button id="bonusChip" onclick="claimBonus()">🎁 <span id="bonusT"></span></button>
+      </div>
+      <div id="folderTabs"></div>
+    </header>
+    <div id="page"></div>
   </div>
 
-  <main id="view"></main>
-
-  <nav id="tabs">
-    <button class="tab active" data-tab="market">🛒<i>Маркет</i><b class="badge hidden" id="badge-market"></b></button>
-    <button class="tab" data-tab="gifts">🎁<i>Подарки</i><b class="badge hidden" id="badge-gifts"></b></button>
-    <button class="tab" data-tab="sales">🏷<i>Продажи</i><b class="badge hidden" id="badge-sales"></b></button>
-    <button class="tab" data-tab="chats">💬<i>Чаты</i><b class="badge hidden" id="badge-chats"></b></button>
-    <button class="tab" data-tab="inv">🎒<i>Мои</i><b class="badge hidden" id="badge-inv"></b></button>
-  </nav>
-
-  <div id="chatModal" class="modal hidden">
-    <div class="chat-box">
-      <div class="chat-head">
-        <button id="chatClose">‹ Назад</button>
-        <div class="chat-who">
-          <span id="chatAvatar">🐱</span>
-          <div>
-            <div id="chatName">Чат</div>
-            <div id="chatStatus">печатает…</div>
-          </div>
-        </div>
-        <div id="chatHint"></div>
+  <div id="screenChat" class="screen under hidden">
+    <header class="under-head">
+      <button class="back" onclick="closeChat()">‹</button>
+      <img id="chatAva" class="ava" alt="">
+      <div class="ut-wrap">
+        <div id="chatTitle" class="ut-title"></div>
+        <div id="chatSub" class="ut-sub"></div>
       </div>
-      <div class="chat-body" id="chatBody"></div>
-      <div class="chat-actions" id="chatActions"></div>
-      <div class="chat-input">
-        <input id="chatInput" type="text" placeholder="Сообщение или сумма в TON…" maxlength="120">
-        <button id="chatSend">➤</button>
-      </div>
+      <div id="chatHint" class="ut-hint"></div>
+    </header>
+    <div id="msgs" class="msgs"></div>
+    <div id="kb" class="kb"></div>
+    <div class="input-bar">
+      <input id="chatInput" type="text" placeholder="Сообщение…" maxlength="140" autocomplete="off">
+      <button id="chatSend" aria-label="send">
+        <svg viewBox="0 0 24 24" width="26" height="26"><path fill="currentColor" d="M12 2 1 21h4.3l2.6-5.7L21 8.2 12 2zm0 0 3.4 13.3L12 22l-3.4-6.7L12 2z"/></svg>
+      </button>
     </div>
+  </div>
+
+  <div id="screenItem" class="screen under hidden">
+    <header class="under-head">
+      <button class="back" onclick="closeItem()">‹</button>
+      <div class="ut-wrap"><div id="itemTitle" class="ut-title"></div><div id="itemSub" class="ut-sub"></div></div>
+    </header>
+    <div id="itemBody" class="item-body"></div>
   </div>
 
   <div id="toasts"></div>
